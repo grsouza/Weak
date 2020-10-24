@@ -23,6 +23,22 @@ final class WeakTests: XCTestCase {
 
         XCTAssertNil(weak.value)
     }
+
+    func testCollectionOfWeakObjects() {
+        let array = Array(repeating: Weak<BarClass>(), count: 10)
+
+        _ = {
+            let strongObjects = Array(repeating: BarClass(), count: 10)
+
+            array.enumerated().forEach { index, _ in
+                array[index].value = strongObjects[index]
+            }
+        }()
+
+        array.forEach {
+            XCTAssertNil($0.value)
+        }
+    }
 }
 
 protocol FooProtocol {}
