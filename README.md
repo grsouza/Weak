@@ -1,4 +1,5 @@
 # Weak
+![CI](https://github.com/grsouza/Weak/workflows/CI/badge.svg)
 
 Type that holds weak references to objects.
 
